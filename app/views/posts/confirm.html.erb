@@ -1,0 +1,17 @@
+<h3>以下の内容で、投稿しますか？</h3>
+
+<%= form_for(@post) do |f| %>
+  <!-- `f.hidden_field`を使用して、リクエストパラメータに値を設定できるようにしています。 -->
+  <%= f.hidden_field :title %>
+  <%= f.hidden_field :content %>
+
+  <p>タイトル:<%= @post.title %></p>
+  <p>本文:<%= @post.content %></p>
+  <%= f.submit "投稿する" %>
+<% end %>
+
+<%= form_for(@post, url: new_post_path, method: 'get') do |f| %>
+  <%= f.hidden_field :title %>
+  <%= f.hidden_field :content %>
+  <%= f.submit "もどる" , name: 'back' %>
+<% end %>
